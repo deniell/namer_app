@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:namer_app/main.dart';
+import 'package:namer_app/core/app_state.dart';
 import 'package:namer_app/pages/generator_page/components/big_card.dart';
+import 'package:namer_app/pages/generator_page/components/history_list_view.dart';
 import 'package:provider/provider.dart';
 
 
 class GeneratorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
+    var appState = context.watch<AppState>();
     var pair = appState.current;
 
     IconData icon;
@@ -21,6 +22,11 @@ class GeneratorPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Expanded(
+            flex: 3,
+            child: HistoryListView(),
+          ),
+          SizedBox(height: 10),
           BigCard(pair: pair),
           SizedBox(height: 10),
           Row(
@@ -42,6 +48,7 @@ class GeneratorPage extends StatelessWidget {
               ),
             ],
           ),
+          Spacer(flex: 2),
         ],
       ),
     );
