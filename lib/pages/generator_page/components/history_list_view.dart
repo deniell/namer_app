@@ -52,7 +52,7 @@ class _HistoryListViewState extends State<HistoryListView> {
                     ? Icon(Icons.favorite, size: 12)
                     : SizedBox(),
                 label: Text(
-                  pair.asLowerCase,
+                  pair.asPascalCase,
                   semanticsLabel: pair.asPascalCase,
                 ),
               ),
