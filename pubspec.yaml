@@ -14,12 +14,31 @@ dependencies:
 
   english_words: ^4.0.0
   provider: ^6.0.0
+  icons_launcher: ^2.1.0
+  flutter_to_debian: ^1.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+
+icons_launcher:
+  image_path: "assets/img/logo.png"
+  platforms:
+    web:
+      enable: true
+      image_path: "assets/img/logo.png"
+#      favicon_path: "assets/ic_logo_round.png"
+    macos:
+      enable: false
+      image_path: "assets/img/logo.png"
+    windows:
+      enable: false
+      image_path: "assets/img/logo.png"
+    linux:
+      enable: true
+      image_path: "assets/img/logo.png"
 
 flutter:
   uses-material-design: true

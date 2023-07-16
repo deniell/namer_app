@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Namer App
+GenericName=Namer App
+Comment=App that allow to generate names, which consist of words pair
+Terminal=false
+Type=Application
+Categories=Utility
+Keywords=Flutter;share;files;

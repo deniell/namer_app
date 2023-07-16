@@ -4,8 +4,10 @@ import 'package:provider/provider.dart';
 
 
 class FavoritesPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     var appState = context.watch<AppState>();
 
     if (appState.favorites.isEmpty) {
@@ -24,33 +26,36 @@ class FavoritesPage extends StatelessWidget {
         ),
         Expanded(
           // Make better use of wide windows with a grid.
-          child: GridView(
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 400,
-              childAspectRatio: 400 / 80,
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: GridView(
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 450,
+                childAspectRatio: 450 / 80,
+                mainAxisSpacing: 5,
+                crossAxisSpacing: 5
+              ),
+              children: [
+                for (var pair in appState.favorites)
+                  Container(
+                    color: theme.colorScheme.inversePrimary,
+                    child: ListTile(
+                        leading: Icon(Icons.favorite, color: Colors.pink),
+                        title: Text(
+                          pair.asPascalCase,
+                          semanticsLabel: pair.asPascalCase,
+                        ),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
+                          color: theme.colorScheme.primary,
+                          onPressed: () {
+                            appState.removeFavorite(pair);
+                          },
+                        ),
+                      ),
+                  ),
+              ],
             ),
-            children: [
-              for (var pair in appState.favorites)
-                ListTile(
-                  leading: Icon(Icons.favorite),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
-                    color: Theme.of(context).colorScheme.primary,
-                    onPressed: () {
-                      appState.removeFavorite(pair);
-                    },
-                  ),
-                  // tileColor: Colors.blue,
-                  // shape: RoundedRectangleBorder(
-                  //   side: const BorderSide(color: Colors.black, width: 4),
-                  //   borderRadius: BorderRadius.circular(15),
-                  // ),
-                  title: Text(
-                    pair.asPascalCase,
-                    semanticsLabel: pair.asPascalCase,
-                  ),
-                ),
-            ],
           ),
         ),
       ],
