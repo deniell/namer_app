@@ -29,6 +29,8 @@ class _HistoryListViewState extends State<HistoryListView> {
     final appState = context.watch<AppState>();
     appState.historyListKey = _key;
 
+    print("build History List, history: ${appState.history}");
+
     return ShaderMask(
       shaderCallback: (bounds) => _maskingGradient.createShader(bounds),
       // This blend mode takes the opacity of the shader (i.e. our gradient)

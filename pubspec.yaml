@@ -16,6 +16,7 @@ dependencies:
   provider: ^6.0.0
   icons_launcher: ^2.1.0
   flutter_to_debian: ^1.0.4
+  shared_preferences: ^2.2.0
 
 dev_dependencies:
   flutter_test:
