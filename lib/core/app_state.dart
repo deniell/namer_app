@@ -15,6 +15,7 @@ class AppState extends ChangeNotifier {
   AppState() {
     SharedPreferences.getInstance().then((prefs) {
       this.prefs = prefs;
+      // for development to be able to clear SharedPreferences
       // prefs.clear();
 
       final List<String>? favorites = prefs.getStringList('favorites');
@@ -34,6 +35,8 @@ class AppState extends ChangeNotifier {
                 prefs.getStringList(pair)![0],
                 prefs.getStringList(pair)![1]
             )).toList();
+        // fill animated list (without this command it is empty, even when there
+        // are some elements in history)
         for(String pair in history) {
           animatedList?.insertItem(0);
         }
